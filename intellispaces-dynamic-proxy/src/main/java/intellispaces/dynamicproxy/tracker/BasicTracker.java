@@ -1,16 +1,14 @@
-package intellispaces.dynamicproxy.object;
-
-import intellispaces.dynamicproxy.model.Watcher;
+package intellispaces.dynamicproxy.tracker;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseWatcher implements Watcher {
+public class BasicTracker implements Tracker {
   private final List<Method> invokedMethods = new ArrayList<>();
 
   @Override
-  public List<Method> invokedMethods() {
+  public List<Method> getInvokedMethods() {
     return List.copyOf(invokedMethods);
   }
 

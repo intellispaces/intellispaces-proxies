@@ -1,8 +1,6 @@
-package ntellispaces.dynamicproxy.factory;
+package intellispaces.dynamicproxy.factory;
 
 import intellispaces.commons.exception.UnexpectedViolationException;
-import intellispaces.dynamicproxy.factory.ProxyFactories;
-import intellispaces.dynamicproxy.factory.ProxyFactory;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
@@ -16,7 +14,7 @@ import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 /**
- * Tests for {@link ProxyFactories} class.
+ * Tests for {@link DynamicProxyFactories} class.
  */
 public class ProxyFactoriesTest {
 
@@ -25,15 +23,15 @@ public class ProxyFactoriesTest {
   public void testGet_whenServiceExists() {
     try (MockedStatic<ServiceLoader> mockStatic = mockStatic(ServiceLoader.class)) {
       // Given
-      ServiceLoader<ProxyFactory> serviceLoader = mock(ServiceLoader.class);
+      ServiceLoader<DynamicProxyFactory> serviceLoader = mock(ServiceLoader.class);
 
-      ProxyFactory proxyFactory = mock(ProxyFactory.class);
+      DynamicProxyFactory proxyFactory = mock(DynamicProxyFactory.class);
       when(serviceLoader.findFirst()).thenReturn(Optional.of(proxyFactory));
 
-      mockStatic.when(() -> ServiceLoader.load(ProxyFactory.class)).thenReturn(serviceLoader);
+      mockStatic.when(() -> ServiceLoader.load(DynamicProxyFactory.class)).thenReturn(serviceLoader);
 
       // When
-      ProxyFactory answer = ProxyFactories.get();
+      DynamicProxyFactory answer = DynamicProxyFactories.get();
 
       // Then
       assertSame(answer, proxyFactory);
@@ -45,14 +43,14 @@ public class ProxyFactoriesTest {
   public void testGet_whenServiceNotExists() {
     try (MockedStatic<ServiceLoader> mockStatic = mockStatic(ServiceLoader.class)) {
       // Given
-      ServiceLoader<ProxyFactory> serviceLoader = mock(ServiceLoader.class);
+      ServiceLoader<DynamicProxyFactory> serviceLoader = mock(ServiceLoader.class);
 
       when(serviceLoader.findFirst()).thenReturn(Optional.empty());
 
-      mockStatic.when(() -> ServiceLoader.load(ProxyFactory.class)).thenReturn(serviceLoader);
+      mockStatic.when(() -> ServiceLoader.load(DynamicProxyFactory.class)).thenReturn(serviceLoader);
 
       // Then
-      assertThrows(UnexpectedViolationException.class, ProxyFactories::get);
+      assertThrows(UnexpectedViolationException.class, DynamicProxyFactories::get);
     }
   }
 }
