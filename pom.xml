@@ -11,8 +11,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispacesframework-dynamicproxy-model</module>
         <module>intellispacesframework-dynamicproxy</module>
+        <module>intellispacesframework-dynamicproxy-model</module>
+        <module>intellispacesframework-dynamicproxy-test</module>
     </modules>
 
     <dependencyManagement>
