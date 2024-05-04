@@ -1,62 +1,63 @@
 package tech.intellispacesframework.dynamicproxy.tracker;
 
-import tech.intellispacesframework.commons.exception.UnexpectedViolationException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import tech.intellispacesframework.commons.reflection.ReflectionFunctions;
+import tech.intellispacesframework.dynamicproxy.DynamicProxy;
+import tech.intellispacesframework.dynamicproxy.sample.InterfaceSample;
+import tech.intellispacesframework.dynamicproxy.sample.InterfaceSampleTracked;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.times;
 
 /**
  * Tests for {@link TrackerFunctions} class.
  */
 public class TrackerFunctionsTest {
 
-  @Test
-  public void testResetTracker_whenIsTracker() {
-    // Given
-    Tracker tracker = spy(new BasicTracker());
-
-    // When
-    TrackerFunctions.resetTracker(tracker);
-
-    // Then
-    verify(tracker).reset();
+  @BeforeEach
+  public void init() throws Exception {
+    ReflectionFunctions.getStaticField(TrackerFunctions.class, "TRACKED_CLASSES_CACHE", Map.class).clear();
   }
 
   @Test
-  public void testGetInvokedMethods_whenIsTracker() {
-    // Given
-    Tracker tracker = spy(new BasicTracker());
+  public void testGetOrCreateTrackedClass() {
+    try (MockedStatic<DynamicProxy> dynamicProxy = mockStatic(DynamicProxy.class)) {
+      // Given
+      dynamicProxy.when(() -> DynamicProxy.createTrackedClass(eq(InterfaceSample.class)))
+          .thenReturn(InterfaceSampleTracked.class);
 
-    List<Method> methods = new ArrayList<>();
-    when(tracker.getInvokedMethods()).thenReturn(methods);
+      // When
+      Class<InterfaceSample> answer1 = TrackerFunctions.getOrCreateTrackedClass(InterfaceSample.class);
+      Class<InterfaceSample> answer2 = TrackerFunctions.getOrCreateTrackedClass(InterfaceSample.class);
 
-    // When
-    List<Method> answer = TrackerFunctions.getInvokedMethods(tracker);
-
-    // Then
-    assertThat(answer).isSameAs(methods);
-    verify(tracker).getInvokedMethods();
+      // Then
+      assertThat(answer1).isEqualTo(InterfaceSampleTracked.class);
+      assertThat(answer2).isEqualTo(InterfaceSampleTracked.class);
+      dynamicProxy.verify(() -> DynamicProxy.createTrackedClass(eq(InterfaceSample.class)), times(1));
+    }
   }
 
   @Test
-  public void testResetTracker_whenIsNotTracker() {
-    assertThatThrownBy(
-        () -> TrackerFunctions.resetTracker(new Object())
-    ).isExactlyInstanceOf(UnexpectedViolationException.class);
-  }
+  public void testCreateTrackedObject() {
+    try (MockedStatic<DynamicProxy> dynamicProxy = mockStatic(DynamicProxy.class)) {
+      // Given
+      Tracker tracker = TrackerBuilder.build();
+      dynamicProxy.when(() -> DynamicProxy.createTrackedClass(eq(InterfaceSample.class)))
+          .thenReturn(InterfaceSampleTracked.class);
 
-  @Test
-  public void testGetInvokedMethods_whenIsNotTracker() {
-    assertThatThrownBy(
-        () -> TrackerFunctions.getInvokedMethods(new Object())
-    ).isExactlyInstanceOf(UnexpectedViolationException.class);
+      // When
+      InterfaceSample trackedObject = TrackerFunctions.createTrackedObject(InterfaceSample.class, tracker);
+
+      // Then
+      assertThat(trackedObject).isNotNull();
+      assertThat(trackedObject).isInstanceOf(InterfaceSampleTracked.class);
+      assertThat(((InterfaceSampleTracked) trackedObject).getTracker()).isSameAs(tracker);
+    }
   }
 }

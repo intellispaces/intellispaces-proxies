@@ -8,13 +8,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 /**
- * Tests for {@link BasicTracker} class.
+ * Tests for {@link TrackerBuilder} class.
  */
-public class BasicTrackerTest {
+public class TrackerBuilderTest {
 
   @Test
   public void test() {
-    var tracker = new BasicTracker();
+    Tracker tracker = TrackerBuilder.build();
     assertThat(tracker.getInvokedMethods()).isEmpty();
 
     Method method1 = mock(Method.class);
@@ -23,7 +23,7 @@ public class BasicTrackerTest {
     tracker.addInvokedMethod(method2);
     assertThat(tracker.getInvokedMethods()).containsExactly(method1, method2);
 
-    tracker.reset();;
+    tracker.reset();
     assertThat(tracker.getInvokedMethods()).isEmpty();
   }
 }

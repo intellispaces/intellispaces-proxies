@@ -8,4 +8,6 @@ public interface Tracker {
   void reset();
 
   List<Method> getInvokedMethods();
+
+  void addInvokedMethod(Method method);
 }

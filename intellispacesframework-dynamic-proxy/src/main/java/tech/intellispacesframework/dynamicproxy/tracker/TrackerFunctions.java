@@ -1,23 +1,31 @@
 package tech.intellispacesframework.dynamicproxy.tracker;
 
 import tech.intellispacesframework.commons.exception.UnexpectedViolationException;
+import tech.intellispacesframework.dynamicproxy.DynamicProxy;
 
-import java.lang.reflect.Method;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public interface TrackerFunctions {
+public class TrackerFunctions {
 
-  static void resetTracker(Object tracker) {
-    if (!Tracker.class.isAssignableFrom(tracker.getClass())) {
-      throw UnexpectedViolationException.withMessage("Object of class {} is not tracker", tracker.getClass().getCanonicalName());
-    }
-    ((Tracker) tracker).reset();
+  @SuppressWarnings("unchecked")
+  public static <T> Class<T> getOrCreateTrackedClass(Class<T> aClass) {
+    return (Class<T>) TRACKED_CLASSES_CACHE.computeIfAbsent(aClass, cls -> createTrackedClass(aClass));
   }
 
-  static List<Method> getInvokedMethods(Object tracker) {
-    if (!Tracker.class.isAssignableFrom(tracker.getClass())) {
-      throw UnexpectedViolationException.withMessage("Object of class {} is not tracker", tracker.getClass().getCanonicalName());
-    }
-    return ((Tracker) tracker).getInvokedMethods();
+  private static <T> Class<T> createTrackedClass(Class<T> aClass) {
+    return DynamicProxy.createTrackedClass(aClass);
   }
+
+  public static <S> S createTrackedObject(Class<S> aClass, Tracker tracker) {
+    try {
+      return getOrCreateTrackedClass(aClass).getConstructor(Tracker.class).newInstance(tracker);
+    } catch (Exception e) {
+      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked object of the class {}", aClass.getCanonicalName());
+    }
+  }
+
+  private static final Map<Class<?>, Object> TRACKED_CLASSES_CACHE = new HashMap<>();
+
+  private TrackerFunctions() {}
 }

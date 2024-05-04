@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicTracker implements Tracker {
+class TrackerImpl implements Tracker {
   private final List<Method> invokedMethods = new ArrayList<>();
 
   @Override
@@ -17,6 +17,7 @@ public class BasicTracker implements Tracker {
     invokedMethods.clear();
   }
 
+  @Override
   public void addInvokedMethod(Method method) {
     this.invokedMethods.add(method);
   }
