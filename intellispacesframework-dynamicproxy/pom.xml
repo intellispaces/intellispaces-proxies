@@ -3,7 +3,7 @@
 
     <parent>
         <groupId>intellispaces</groupId>
-        <artifactId>intellispacesframework-dynamicproxy-root</artifactId>
+        <artifactId>intellispacesframework-dynamicproxy-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
