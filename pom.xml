@@ -7,19 +7,19 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>intellispacesframework-dynamic-proxy-root</artifactId>
+    <artifactId>intellispacesframework-dynamicproxy-root</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispacesframework-dynamic-proxy-model</module>
-        <module>intellispacesframework-dynamic-proxy</module>
+        <module>intellispacesframework-dynamicproxy-model</module>
+        <module>intellispacesframework-dynamicproxy</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>intellispaces</groupId>
-                <artifactId>intellispacesframework-dynamic-proxy-model</artifactId>
+                <artifactId>intellispacesframework-dynamicproxy-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>

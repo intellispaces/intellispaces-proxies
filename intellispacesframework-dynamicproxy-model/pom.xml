@@ -3,11 +3,11 @@
 
     <parent>
         <groupId>intellispaces</groupId>
-        <artifactId>intellispacesframework-dynamic-proxy-root</artifactId>
+        <artifactId>intellispacesframework-dynamicproxy-root</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>intellispacesframework-dynamic-proxy-model</artifactId>
+    <artifactId>intellispacesframework-dynamicproxy-model</artifactId>
     <packaging>jar</packaging>
 	
     <build>
