@@ -19,7 +19,7 @@ public interface DynamicProxyTest {
     final TrackedInterface trackedObject;
     Tracker tracker = TrackerBuilder.build();
     try {
-      Class<TrackedInterface> trackedClass = factory.createTrackedClass(TrackedInterface.class);
+      Class<TrackedInterface> trackedClass = factory.getTrackedClass(TrackedInterface.class);
       trackedObject = trackedClass.getConstructor(Tracker.class).newInstance(tracker);
     } catch (Exception e) {
       throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked class");
@@ -63,7 +63,7 @@ public interface DynamicProxyTest {
     final AbstractClass trackedObject;
     Tracker tracker = TrackerBuilder.build();
     try {
-      Class<AbstractClass> trackedClass = factory.createTrackedClass(AbstractClass.class);
+      Class<AbstractClass> trackedClass = factory.getTrackedClass(AbstractClass.class);
       trackedObject = trackedClass.getConstructor(Tracker.class).newInstance(tracker);
     } catch (Exception e) {
       throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked class");
@@ -111,7 +111,7 @@ public interface DynamicProxyTest {
           .type(AbstractClass.class)
           .abstractMethodHandler((object, method, arguments) -> arguments[0])
           .build();
-      Class<AbstractClass> proxyClass = factory.createProxyClass(contract);
+      Class<AbstractClass> proxyClass = factory.getProxyClass(contract);
       proxy = proxyClass.getConstructor().newInstance();
     } catch (Exception e) {
       throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create proxy");
@@ -137,7 +137,7 @@ public interface DynamicProxyTest {
           .type(AbstractClass.class)
           .whenCall(AbstractClass::method1, 0).then(i -> i * 2)
           .build();
-      Class<AbstractClass> proxyClass = factory.createProxyClass(contract);
+      Class<AbstractClass> proxyClass = factory.getProxyClass(contract);
       proxy = proxyClass.getConstructor().newInstance();
     } catch (Exception e) {
       throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create proxy");
