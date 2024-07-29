@@ -3,29 +3,29 @@
 
     <parent>
         <groupId>intellispaces</groupId>
-        <artifactId>intellispacesframework-parent-pom</artifactId>
+        <artifactId>intellispaces-parent-pom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>intellispacesframework-dynamicproxy-parent</artifactId>
+    <artifactId>intellispaces-dynamicproxy-parent</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispacesframework-dynamicproxy</module>
-        <module>intellispacesframework-dynamicproxy-model</module>
-        <module>intellispacesframework-dynamicproxy-test</module>
+        <module>intellispaces-dynamicproxy</module>
+        <module>intellispaces-dynamicproxy-model</module>
+        <module>intellispaces-dynamicproxy-test</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>intellispaces</groupId>
-                <artifactId>intellispacesframework-dynamicproxy-model</artifactId>
+                <artifactId>intellispaces-dynamicproxy-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>intellispaces</groupId>
-                <artifactId>intellispacesframework-commons</artifactId>
+                <artifactId>intellispaces-commons</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
