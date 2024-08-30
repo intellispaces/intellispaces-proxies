@@ -13,7 +13,7 @@ public class DynamicProxyFactories {
     if (proxyFactory == null) {
       ServiceLoader<DynamicProxyFactory> serviceLoader = ServiceLoader.load(DynamicProxyFactory.class);
       proxyFactory = serviceLoader.findFirst().orElseThrow(() -> UnexpectedViolationException.withMessage(
-          "The implementation of the factory {} is not provided", DynamicProxyFactory.class.getCanonicalName()));
+          "The implementation of the factory {0} is not provided", DynamicProxyFactory.class.getCanonicalName()));
     }
     return proxyFactory;
   }

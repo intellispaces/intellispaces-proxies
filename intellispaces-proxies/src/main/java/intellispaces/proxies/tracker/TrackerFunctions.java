@@ -21,7 +21,8 @@ public class TrackerFunctions {
     try {
       return getOrCreateTrackedClass(aClass).getConstructor(Tracker.class).newInstance(tracker);
     } catch (Exception e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked object of the class {}", aClass.getCanonicalName());
+      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked object of the class {0}",
+          aClass.getCanonicalName());
     }
   }
 
