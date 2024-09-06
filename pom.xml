@@ -2,30 +2,30 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>intellispaces</groupId>
+        <groupId>intellispaces-common</groupId>
         <artifactId>intellispaces-parent-pom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>intellispaces-proxies-parent</artifactId>
+    <artifactId>intellispaces-dynamicproxy-parent</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispaces-proxies</module>
-        <module>intellispaces-proxies-model</module>
-        <module>intellispaces-proxies-test</module>
+        <module>intellispaces-dynamicproxy</module>
+        <module>intellispaces-dynamicproxy-model</module>
+        <module>intellispaces-dynamicproxy-test</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>intellispaces</groupId>
-                <artifactId>intellispaces-proxies-model</artifactId>
+                <groupId>intellispaces-common</groupId>
+                <artifactId>intellispaces-dynamicproxy-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>intellispaces</groupId>
-                <artifactId>intellispaces-commons</artifactId>
+                <groupId>intellispaces-common</groupId>
+                <artifactId>intellispaces-base</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
