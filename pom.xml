@@ -14,6 +14,7 @@
         <module>intellispaces-dynamicproxy</module>
         <module>intellispaces-dynamicproxy-model</module>
         <module>intellispaces-dynamicproxy-test</module>
+        <module>intellispaces-dynamicproxy-bytebuddy</module>
     </modules>
 
     <dependencyManagement>
