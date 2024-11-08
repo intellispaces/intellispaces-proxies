@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.bytebuddy.factory;
 
-import intellispaces.common.base.type.TypeFunctions;
+import intellispaces.common.base.type.ClassFunctions;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
@@ -15,6 +15,6 @@ public class TrackerMethodInterceptor {
   @RuntimeType
   public Object intercept(@This TrackedObject trackedObject, @Origin Method method, @AllArguments Object[] arguments) {
     trackedObject.___tracker().addInvokedMethod(method);
-    return TypeFunctions.getDefaultValueOf(method.getReturnType());
+    return ClassFunctions.getDefaultValueOf(method.getReturnType());
   }
 }

@@ -1,7 +1,7 @@
 package intellispaces.common.dynamicproxy.bytebuddy.factory;
 
 import com.google.auto.service.AutoService;
-import intellispaces.common.base.exception.UnexpectedViolationException;
+import intellispaces.common.base.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.contract.MethodHandler;
 import intellispaces.common.dynamicproxy.contract.ProxyContract;
 import intellispaces.common.dynamicproxy.factory.DynamicProxyFactory;
@@ -52,7 +52,7 @@ public class ByteBuddyDynamicProxyFactory implements DynamicProxyFactory {
           .load(ByteBuddyDynamicProxyFactory.class.getClassLoader())
           .getLoaded();
     } catch (NoSuchMethodException | SecurityException e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked class of {0}",
+      throw UnexpectedExceptions.withCauseAndMessage(e, "Failed to create tracked class of {0}",
           aClass.getCanonicalName());
     }
   }

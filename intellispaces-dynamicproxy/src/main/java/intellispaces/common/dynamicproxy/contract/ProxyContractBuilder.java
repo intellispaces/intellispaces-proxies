@@ -1,9 +1,9 @@
 package intellispaces.common.dynamicproxy.contract;
 
+import intellispaces.common.base.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.tracker.Tracker;
-import intellispaces.common.dynamicproxy.tracker.TrackerBuilder;
 import intellispaces.common.dynamicproxy.tracker.TrackerFunctions;
-import intellispaces.common.base.exception.UnexpectedViolationException;
+import intellispaces.common.dynamicproxy.tracker.Trackers;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class ProxyContractBuilder<T> {
   public <N> ProxyContractBuilder<N> type(Class<N> type) {
     Objects.requireNonNull(type);
     if (this.type != null) {
-      throw UnexpectedViolationException.withMessage("Proxy type has already been set");
+      throw UnexpectedExceptions.withMessage("Proxy type has already been set");
     }
     this.type = (Class<T>) type;
     return (ProxyContractBuilder<N>) this;
@@ -77,12 +77,12 @@ public class ProxyContractBuilder<T> {
     Objects.requireNonNull(declaringClass);
     Objects.requireNonNull(methodReference);
 
-    Tracker tracker = TrackerBuilder.build();
+    Tracker tracker = Trackers.get();
     D trackedObject = TrackerFunctions.createTrackedObject(declaringClass, tracker);
     methodReference.apply(trackedObject);
     List<Method> methods = tracker.getInvokedMethods();
     if (methods.isEmpty()) {
-      throw UnexpectedViolationException.withMessage("Desired method is not recognized");
+      throw UnexpectedExceptions.withMessage("Desired method is not recognized");
     }
     return new ProxyContractInterimBuilderWhenCallMethod1<>(this, methods.get(0));
   }
@@ -93,12 +93,12 @@ public class ProxyContractBuilder<T> {
     Objects.requireNonNull(declaringClass);
     Objects.requireNonNull(methodReference);
 
-    Tracker tracker = TrackerBuilder.build();
+    Tracker tracker = Trackers.get();
     D trackedObject = TrackerFunctions.createTrackedObject(declaringClass, tracker);
     methodReference.apply(trackedObject, argumentAnyValidValue);
     List<Method> methods = tracker.getInvokedMethods();
     if (methods.isEmpty()) {
-      throw UnexpectedViolationException.withMessage("Desired method is not recognized");
+      throw UnexpectedExceptions.withMessage("Desired method is not recognized");
     }
     return new ProxyContractInterimBuilderWhenCallMethod2<>(this, methods.get(0));
   }

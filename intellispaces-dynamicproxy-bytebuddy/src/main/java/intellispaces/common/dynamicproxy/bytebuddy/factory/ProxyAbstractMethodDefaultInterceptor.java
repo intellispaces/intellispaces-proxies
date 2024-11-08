@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.bytebuddy.factory;
 
-import intellispaces.common.base.exception.UnexpectedViolationException;
+import intellispaces.common.base.exception.UnexpectedExceptions;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 
@@ -12,7 +12,7 @@ public class ProxyAbstractMethodDefaultInterceptor {
 
   @RuntimeType
   public Object intercept(@Origin Method method) {
-    throw UnexpectedViolationException.withMessage("Interceptor of abstract proxy method ''{0}'' is not defined. " +
+    throw UnexpectedExceptions.withMessage("Interceptor of abstract proxy method '{0}' is not defined. " +
             "Class {1}", method.getName(), method.getDeclaringClass().getCanonicalName());
   }
 }

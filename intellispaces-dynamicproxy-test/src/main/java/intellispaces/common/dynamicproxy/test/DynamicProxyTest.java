@@ -1,13 +1,14 @@
 package intellispaces.common.dynamicproxy.test;
 
+import intellispaces.common.base.exception.UnexpectedException;
+import intellispaces.common.base.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.contract.ProxyContract;
 import intellispaces.common.dynamicproxy.contract.ProxyContractBuilder;
 import intellispaces.common.dynamicproxy.factory.DynamicProxyFactory;
 import intellispaces.common.dynamicproxy.test.samples.AbstractClass;
 import intellispaces.common.dynamicproxy.test.samples.TrackedInterface;
 import intellispaces.common.dynamicproxy.tracker.Tracker;
-import intellispaces.common.dynamicproxy.tracker.TrackerBuilder;
-import intellispaces.common.base.exception.UnexpectedViolationException;
+import intellispaces.common.dynamicproxy.tracker.Trackers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -17,12 +18,12 @@ public interface DynamicProxyTest {
   static void testCreateTrackedClass_whenInterface(DynamicProxyFactory factory) {
     // Given
     final TrackedInterface trackedObject;
-    Tracker tracker = TrackerBuilder.build();
+    Tracker tracker = Trackers.get();
     try {
       Class<TrackedInterface> trackedClass = factory.getTrackedClass(TrackedInterface.class);
       trackedObject = trackedClass.getConstructor(Tracker.class).newInstance(tracker);
     } catch (Exception e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked class");
+      throw UnexpectedExceptions.withCauseAndMessage(e, "Failed to create tracked class");
     }
     assertThat(trackedObject).isInstanceOf(TrackedInterface.class);
     assertThat(tracker.getInvokedMethods()).isEmpty();
@@ -61,12 +62,12 @@ public interface DynamicProxyTest {
   static void testCreateTrackedClass_whenAbstractClass(DynamicProxyFactory factory) {
     // Given
     final AbstractClass trackedObject;
-    Tracker tracker = TrackerBuilder.build();
+    Tracker tracker = Trackers.get();
     try {
       Class<AbstractClass> trackedClass = factory.getTrackedClass(AbstractClass.class);
       trackedObject = trackedClass.getConstructor(Tracker.class).newInstance(tracker);
     } catch (Exception e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked class");
+      throw UnexpectedExceptions.withCauseAndMessage(e, "Failed to create tracked class");
     }
     assertThat(trackedObject).isInstanceOf(AbstractClass.class);
     assertThat(tracker.getInvokedMethods()).isEmpty();
@@ -114,7 +115,7 @@ public interface DynamicProxyTest {
       Class<AbstractClass> proxyClass = factory.getProxyClass(contract);
       proxy = proxyClass.getConstructor().newInstance();
     } catch (Exception e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create proxy");
+      throw UnexpectedExceptions.withCauseAndMessage(e, "Failed to create proxy");
     }
 
     // Then
@@ -140,7 +141,7 @@ public interface DynamicProxyTest {
       Class<AbstractClass> proxyClass = factory.getProxyClass(contract);
       proxy = proxyClass.getConstructor().newInstance();
     } catch (Exception e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create proxy");
+      throw UnexpectedExceptions.withCauseAndMessage(e, "Failed to create proxy");
     }
 
     // Then
@@ -151,7 +152,7 @@ public interface DynamicProxyTest {
     assertThat(proxy.method1(2)).isEqualTo(4);
 
     assertThatThrownBy(() -> proxy.method2("a"))
-        .isExactlyInstanceOf(UnexpectedViolationException.class)
+        .isExactlyInstanceOf(UnexpectedException.class)
             .hasMessage("Interceptor of abstract proxy method 'method2' is not defined. Class " + AbstractClass.class.getCanonicalName());
   }
 }

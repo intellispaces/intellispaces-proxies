@@ -1,8 +1,11 @@
 package intellispaces.common.dynamicproxy.tracker;
 
-public interface TrackerBuilder {
+/**
+ * Tracker provider.
+ */
+public interface Trackers {
 
-  static Tracker build() {
+  static Tracker get() {
     return new TrackerImpl();
   }
 }

@@ -5,20 +5,19 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Method;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 
 /**
- * Tests for {@link TrackerBuilder} class.
+ * Tests for {@link Trackers} class.
  */
-public class TrackerBuilderTest {
+public class TrackersTest {
 
   @Test
-  public void test() {
-    Tracker tracker = TrackerBuilder.build();
+  public void test() throws Exception {
+    Tracker tracker = Trackers.get();
     assertThat(tracker.getInvokedMethods()).isEmpty();
 
-    Method method1 = mock(Method.class);
-    Method method2 = mock(Method.class);
+    Method method1 = String.class.getMethod("isEmpty");
+    Method method2 = String.class.getMethod("trim");
     tracker.addInvokedMethod(method1);
     tracker.addInvokedMethod(method2);
     assertThat(tracker.getInvokedMethods()).containsExactly(method1, method2);

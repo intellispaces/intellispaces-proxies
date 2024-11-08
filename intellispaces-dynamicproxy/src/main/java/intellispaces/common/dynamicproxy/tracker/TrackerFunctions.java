@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.tracker;
 
-import intellispaces.common.base.exception.UnexpectedViolationException;
+import intellispaces.common.base.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.Proxies;
 
 import java.util.HashMap;
@@ -21,7 +21,7 @@ public class TrackerFunctions {
     try {
       return getOrCreateTrackedClass(aClass).getConstructor(Tracker.class).newInstance(tracker);
     } catch (Exception e) {
-      throw UnexpectedViolationException.withCauseAndMessage(e, "Failed to create tracked object of the class {0}",
+      throw UnexpectedExceptions.withCauseAndMessage(e, "Failed to create tracked object of the class {0}",
           aClass.getCanonicalName());
     }
   }

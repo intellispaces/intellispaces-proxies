@@ -1,9 +1,9 @@
 package intellispaces.common.dynamicproxy.factory;
 
-import org.mockito.Mockito;
-import intellispaces.common.base.exception.UnexpectedViolationException;
+import intellispaces.common.base.exception.UnexpectedException;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
+import org.mockito.Mockito;
 
 import java.util.Optional;
 import java.util.ServiceLoader;
@@ -51,7 +51,7 @@ public class ProxyFactoriesTest {
       mockStatic.when(() -> ServiceLoader.load(DynamicProxyFactory.class)).thenReturn(serviceLoader);
 
       // Then
-      assertThrows(UnexpectedViolationException.class, DynamicProxyFactories::get);
+      assertThrows(UnexpectedException.class, DynamicProxyFactories::get);
     }
   }
 }
