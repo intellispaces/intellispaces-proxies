@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.factory;
 
-import intellispaces.common.base.exception.UnexpectedException;
+import tech.intellispaces.entity.exception.UnexpectedException;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;

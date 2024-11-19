@@ -1,7 +1,7 @@
 package intellispaces.common.dynamicproxy.test;
 
-import intellispaces.common.base.exception.UnexpectedException;
-import intellispaces.common.base.exception.UnexpectedExceptions;
+import tech.intellispaces.entity.exception.UnexpectedException;
+import tech.intellispaces.entity.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.contract.ProxyContract;
 import intellispaces.common.dynamicproxy.contract.ProxyContractBuilder;
 import intellispaces.common.dynamicproxy.factory.DynamicProxyFactory;

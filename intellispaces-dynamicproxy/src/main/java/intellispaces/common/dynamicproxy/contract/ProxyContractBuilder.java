@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.contract;
 
-import intellispaces.common.base.exception.UnexpectedExceptions;
+import tech.intellispaces.entity.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.tracker.Tracker;
 import intellispaces.common.dynamicproxy.tracker.TrackerFunctions;
 import intellispaces.common.dynamicproxy.tracker.Trackers;

@@ -1,7 +1,7 @@
 package intellispaces.common.dynamicproxy.bytebuddy.factory;
 
 import com.google.auto.service.AutoService;
-import intellispaces.common.base.exception.UnexpectedExceptions;
+import tech.intellispaces.entity.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.contract.MethodHandler;
 import intellispaces.common.dynamicproxy.contract.ProxyContract;
 import intellispaces.common.dynamicproxy.factory.DynamicProxyFactory;

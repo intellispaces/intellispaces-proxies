@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.tracker;
 
-import intellispaces.common.base.type.ClassFunctions;
+import tech.intellispaces.entity.type.ClassFunctions;
 import intellispaces.common.dynamicproxy.Proxies;
 import intellispaces.common.dynamicproxy.sample.InterfaceSample;
 import intellispaces.common.dynamicproxy.sample.InterfaceSampleTracked;

@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.tracker;
 
-import intellispaces.common.base.exception.UnexpectedExceptions;
+import tech.intellispaces.entity.exception.UnexpectedExceptions;
 import intellispaces.common.dynamicproxy.Proxies;
 
 import java.util.HashMap;

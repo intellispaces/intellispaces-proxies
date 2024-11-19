@@ -1,6 +1,6 @@
 package intellispaces.common.dynamicproxy.factory;
 
-import intellispaces.common.base.exception.UnexpectedExceptions;
+import tech.intellispaces.entity.exception.UnexpectedExceptions;
 
 import java.util.ServiceLoader;
 
