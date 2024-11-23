@@ -7,22 +7,22 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>intellispaces-common</groupId>
-    <artifactId>intellispaces-dynamicproxy-parent</artifactId>
+    <groupId>tech.intellispaces.common</groupId>
+    <artifactId>intellispaces-proxy-parent</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispaces-dynamicproxy</module>
-        <module>intellispaces-dynamicproxy-model</module>
-        <module>intellispaces-dynamicproxy-test</module>
-        <module>intellispaces-dynamicproxy-bytebuddy</module>
+        <module>intellispaces-proxy</module>
+        <module>intellispaces-proxy-model</module>
+        <module>intellispaces-proxy-test</module>
+        <module>intellispaces-proxy-bytebuddy</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>intellispaces-common</groupId>
-                <artifactId>intellispaces-dynamicproxy-model</artifactId>
+                <groupId>tech.intellispaces.common</groupId>
+                <artifactId>intellispaces-proxy-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
