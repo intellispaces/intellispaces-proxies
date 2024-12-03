@@ -1,6 +1,6 @@
 package tech.intellispaces.proxy.factory;
 
-import tech.intellispaces.entity.exception.UnexpectedException;
+import tech.intellispaces.general.exception.UnexpectedException;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;

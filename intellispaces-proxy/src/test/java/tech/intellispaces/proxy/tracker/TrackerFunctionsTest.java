@@ -1,6 +1,6 @@
 package tech.intellispaces.proxy.tracker;
 
-import tech.intellispaces.entity.type.ClassFunctions;
+import tech.intellispaces.general.type.ClassFunctions;
 import tech.intellispaces.proxy.Proxies;
 import tech.intellispaces.proxy.sample.InterfaceSample;
 import tech.intellispaces.proxy.sample.InterfaceSampleTracked;

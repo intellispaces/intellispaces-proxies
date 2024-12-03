@@ -1,6 +1,6 @@
 package tech.intellispaces.proxy.tracker;
 
-import tech.intellispaces.entity.exception.UnexpectedExceptions;
+import tech.intellispaces.general.exception.UnexpectedExceptions;
 import tech.intellispaces.proxy.Proxies;
 
 import java.util.HashMap;

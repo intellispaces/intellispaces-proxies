@@ -1,7 +1,7 @@
 package tech.intellispaces.proxy.bytebuddy.factory;
 
 import com.google.auto.service.AutoService;
-import tech.intellispaces.entity.exception.UnexpectedExceptions;
+import tech.intellispaces.general.exception.UnexpectedExceptions;
 import tech.intellispaces.proxy.contract.MethodHandler;
 import tech.intellispaces.proxy.contract.ProxyContract;
 import tech.intellispaces.proxy.factory.DynamicProxyFactory;

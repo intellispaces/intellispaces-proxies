@@ -1,6 +1,6 @@
 package tech.intellispaces.proxy.bytebuddy.factory;
 
-import tech.intellispaces.entity.type.ClassFunctions;
+import tech.intellispaces.general.type.ClassFunctions;
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;

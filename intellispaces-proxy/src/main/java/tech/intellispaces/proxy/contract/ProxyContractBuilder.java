@@ -1,6 +1,6 @@
 package tech.intellispaces.proxy.contract;
 
-import tech.intellispaces.entity.exception.UnexpectedExceptions;
+import tech.intellispaces.general.exception.UnexpectedExceptions;
 import tech.intellispaces.proxy.tracker.Tracker;
 import tech.intellispaces.proxy.tracker.TrackerFunctions;
 import tech.intellispaces.proxy.tracker.Trackers;
