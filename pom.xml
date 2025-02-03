@@ -7,27 +7,27 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>tech.intellispaces.common</groupId>
-    <artifactId>intellispaces-proxy-parent</artifactId>
+    <groupId>tech.intellispaces.commons</groupId>
+    <artifactId>intellispaces-commons-proxy-parent</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispaces-proxy</module>
-        <module>intellispaces-proxy-model</module>
-        <module>intellispaces-proxy-test</module>
-        <module>intellispaces-proxy-bytebuddy</module>
+        <module>intellispaces-commons-proxy</module>
+        <module>intellispaces-commons-proxy-model</module>
+        <module>intellispaces-commons-proxy-test</module>
+        <module>intellispaces-commons-proxy-bytebuddy</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>tech.intellispaces.common</groupId>
-                <artifactId>intellispaces-proxy-model</artifactId>
+                <groupId>tech.intellispaces.commons</groupId>
+                <artifactId>intellispaces-commons-proxy-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>tech.intellispaces.common</groupId>
-                <artifactId>intellispaces-general</artifactId>
+                <groupId>tech.intellispaces.commons</groupId>
+                <artifactId>intellispaces-commons-base</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
