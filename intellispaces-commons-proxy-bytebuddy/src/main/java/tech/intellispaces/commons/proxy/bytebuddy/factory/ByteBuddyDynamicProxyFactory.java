@@ -8,7 +8,7 @@ import net.bytebuddy.dynamic.scaffold.subclass.ConstructorStrategy;
 import net.bytebuddy.implementation.FieldAccessor;
 import net.bytebuddy.implementation.MethodCall;
 import net.bytebuddy.implementation.MethodDelegation;
-import tech.intellispaces.commons.base.exception.UnexpectedExceptions;
+import tech.intellispaces.commons.exception.UnexpectedExceptions;
 import tech.intellispaces.commons.proxy.contract.MethodHandler;
 import tech.intellispaces.commons.proxy.contract.ProxyContract;
 import tech.intellispaces.commons.proxy.factory.DynamicProxyFactory;

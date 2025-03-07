@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import tech.intellispaces.commons.base.type.ClassFunctions;
+import tech.intellispaces.commons.type.ClassFunctions;
 import tech.intellispaces.commons.proxy.Proxies;
 import tech.intellispaces.commons.proxy.sample.InterfaceSample;
 import tech.intellispaces.commons.proxy.sample.InterfaceSampleTracked;

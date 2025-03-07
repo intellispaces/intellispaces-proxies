@@ -4,7 +4,7 @@ import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.This;
-import tech.intellispaces.commons.base.type.ClassFunctions;
+import tech.intellispaces.commons.type.ClassFunctions;
 
 import java.lang.reflect.Method;
 

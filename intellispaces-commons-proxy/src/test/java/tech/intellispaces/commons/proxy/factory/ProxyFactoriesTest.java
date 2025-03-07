@@ -3,7 +3,7 @@ package tech.intellispaces.commons.proxy.factory;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import tech.intellispaces.commons.base.exception.UnexpectedException;
+import tech.intellispaces.commons.exception.UnexpectedException;
 
 import java.util.Optional;
 import java.util.ServiceLoader;

@@ -2,7 +2,7 @@ package tech.intellispaces.commons.proxy.bytebuddy.factory;
 
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
-import tech.intellispaces.commons.base.exception.UnexpectedExceptions;
+import tech.intellispaces.commons.exception.UnexpectedExceptions;
 
 import java.lang.reflect.Method;
 
