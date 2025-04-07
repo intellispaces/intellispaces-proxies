@@ -2,31 +2,30 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>tech.intellispaces.parent</groupId>
+        <groupId>tech.intellispaces</groupId>
         <artifactId>intellispaces-parent-pom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>tech.intellispaces.commons</groupId>
-    <artifactId>intellispaces-commons-proxy-parent</artifactId>
+    <artifactId>intellispaces-proxies-parent</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>intellispaces-commons-proxy</module>
-        <module>intellispaces-commons-proxy-model</module>
-        <module>intellispaces-commons-proxy-test</module>
-        <module>intellispaces-commons-proxy-bytebuddy</module>
+        <module>intellispaces-proxies</module>
+        <module>intellispaces-proxies-model</module>
+        <module>intellispaces-proxies-test</module>
+        <module>intellispaces-proxies-bytebuddy</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>tech.intellispaces.commons</groupId>
-                <artifactId>intellispaces-commons-proxy-model</artifactId>
+                <groupId>tech.intellispaces</groupId>
+                <artifactId>intellispaces-proxies-model</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>tech.intellispaces.commons</groupId>
+                <groupId>tech.intellispaces</groupId>
                 <artifactId>intellispaces-commons</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
